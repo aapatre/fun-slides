@@ -20,6 +20,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import { Button, PanelBody, PanelRow, RangeControl } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,13 +30,51 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
-	return (
-		<InspectorControls>
+export default function Edit( { attributes, setAttributes } ) {
 
-		</InspectorControls>,
-		<div { ...useBlockProps() }>
-			{ __( 'Fun Slides – hello from the editor!', 'fun-slides' ) }
-		</div>
+	const {
+		totalSlides,
+		tempTotalSlides
+	} = attributes;
+
+	function changeTempTotalSlides( newTempTotalSlides ) {
+		setAttributes( { tempTotalSlides: newTempTotalSlides } );
+	}
+
+	function changeTotalSlides() {
+		setAttributes( { totalSlides: tempTotalSlides } );
+	}
+
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody
+					title={ __( 'Fun Slides Settings', 'fun-slides' ) }
+					initialOpen={ true }
+				>
+					<PanelRow>
+						<RangeControl
+							label="Total Slides?"
+							value={ tempTotalSlides }
+							onChange={ changeTempTotalSlides }
+							min={ 3 }
+							max={ 30 }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<Button
+								onClick= { changeTotalSlides }
+								variant= 'primary'
+							>
+								Confirm
+						</Button>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
+			<div { ...useBlockProps() }>
+				{ __( 'Hello from the editor!', 'fun-slides' ) }
+				Total: { totalSlides }
+			</div>
+		</>
 	);
 }

@@ -15,6 +15,12 @@
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css",
 	"attributes": {
-		
+		"totalSlides": {
+			"type": "integer"
+		},
+		"tempTotalSlides": {
+			"type": "integer",
+			"default": 3
+		}
 	}
 }
