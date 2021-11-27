@@ -104,7 +104,9 @@ function Edit(_ref) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     onClick: changeTotalSlides,
     variant: "primary"
-  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_5__["default"], null, slideshow.map((slide, index) => {
+  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), slideshow[0] === undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Add a slide with the ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "dashicons dashicons-plus"
+  }), " icon on block toolbar"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_5__["default"], null, slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Slide Index: ", index);
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
     icon: "plus",

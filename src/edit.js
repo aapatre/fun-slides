@@ -87,6 +87,12 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 			<div { ...useBlockProps() }>
 
+				{/* If no slides in the slideshow, tell user to add one */}
+
+				{ ( slideshow[0] === undefined ) && (
+					<div>Add a slide with the <span class="dashicons dashicons-plus"></span> icon on block toolbar</div>
+				)}
+
 				<Slider>
 					{slideshow.map( (slide, index) => {
 						return(
