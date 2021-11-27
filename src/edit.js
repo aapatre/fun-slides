@@ -22,6 +22,11 @@ import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/bloc
 import './editor.scss';
 import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton } from '@wordpress/components';
 
+// Import Slick Slider.
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -82,11 +87,14 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 			<div { ...useBlockProps() }>
 
-				{slideshow.map( (slide, index) => {
-					return(
-						<p>Slide Index: {index}</p>
-					);
-				})}
+				<Slider>
+					{slideshow.map( (slide, index) => {
+						return(
+							<p>Slide Index: {index}</p>
+						);
+					})}
+				</Slider>
+
 
 				<BlockControls>
 					<ToolbarButton
