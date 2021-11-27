@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { BlockControls, InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -21,6 +21,8 @@ import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/bloc
  */
 import './editor.scss';
 import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton } from '@wordpress/components';
+
+import { useState } from '@wordpress/element';
 
 // Import Slick Slider.
 import Slider from "react-slick";
@@ -43,6 +45,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		slideshow
 	} = attributes;
 
+	const [ currentSlideIndex, setCurrentSlideIndex ] = useState( 0 );
+
 	function changeTempTotalSlides( newTempTotalSlides ) {
 		setAttributes( { tempTotalSlides: newTempTotalSlides } );
 	}
@@ -51,13 +55,65 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { totalSlides: tempTotalSlides } );
 	}
 
-	function addNewSlide() {
+	function addNewSlide( newSlide ) {
 		
-		const new_slideshow = [ ...slideshow, 'y' ];
+		const new_slideshow = [ ...slideshow, 
+			{
+				mediaSrc: "",
+				mediaType: "",
+			}
+		];
 
 		setAttributes( { slideshow: new_slideshow } );
 
 	}
+
+	function changeMediaSrc( newMedia ) {
+
+		console.log(currentSlideIndex);
+		console.log(newMedia);
+
+		// setAttributes( { slideshow: {
+		// 		...slideshow,
+		// 		... {
+		// 			mediaSrc: newMedia.url,
+		// 			mediaType: newMedia.type
+		// 		}
+		// } } );
+
+		setAttributes( { slideshow: slideshow.map( ( slide, index )  => {
+
+				if ( index == currentSlideIndex ) {
+					return(
+						{
+							...slide,
+							mediaSrc: newMedia.url,
+							mediaType: newMedia.type
+						}
+					);
+				}
+
+			} )
+		} );
+
+		console.log({slideshow});
+	}
+
+	function changeSlideIndex( oldIndex, newIndex ) {
+		setCurrentSlideIndex( newIndex );
+	}
+
+	const funSlidesSettings = {
+		dots: true,
+		arrows: true,
+		autoplay: false,
+		pauseOnHover: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		infinite: true,
+		speed: 500,
+		// autoplaySpeed: settings.autoplaySpeed,
+	};
 
 	return (
 		<>
@@ -91,14 +147,33 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				{ ( slideshow[0] === undefined ) && (
 					<div>Add a slide with the <span class="dashicons dashicons-plus"></span> icon on block toolbar</div>
-				)}
+				) }
 
-				<Slider>
-					{slideshow.map( (slide, index) => {
+				<Slider
+					beforeChange = { changeSlideIndex }
+					{ ...funSlidesSettings }
+				>
+					{ slideshow.map( (slide, index) => {
 						return(
-							<p>Slide Index: {index}</p>
+							<div className="fun-slide-slide">
+								<p>Slide Index: {index}</p>
+								{ ( slide.mediaSrc === "" ) && (
+									
+									<MediaPlaceholder
+										labels = { {
+											title: "Choose Media for the Slide"
+										} }
+										onSelect = { changeMediaSrc }
+										accept = "video/*, image/*"
+										allowedTypes = { [ "video", "image" ] }
+									/>
+
+								) }
+								{ slide.mediaType }
+								{ slide.mediaSrc }
+							</div>
 						);
-					})}
+					} ) }
 				</Slider>
 
 
