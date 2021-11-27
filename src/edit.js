@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +20,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { Button, PanelBody, PanelRow, RangeControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -34,7 +34,8 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const {
 		totalSlides,
-		tempTotalSlides
+		tempTotalSlides,
+		slideshow
 	} = attributes;
 
 	function changeTempTotalSlides( newTempTotalSlides ) {
@@ -43,6 +44,14 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	function changeTotalSlides() {
 		setAttributes( { totalSlides: tempTotalSlides } );
+	}
+
+	function addNewSlide() {
+		
+		const new_slideshow = [ ...slideshow, 'y' ];
+
+		setAttributes( { slideshow: new_slideshow } );
+
 	}
 
 	return (
@@ -72,8 +81,21 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
-				{ __( 'Hello from the editor!', 'fun-slides' ) }
-				Total: { totalSlides }
+
+				{slideshow.map( (slide, index) => {
+					return(
+						<p>Slide Index: {index}</p>
+					);
+				})}
+
+				<BlockControls>
+					<ToolbarButton
+						icon='plus'
+						label={ __( "New Slide", 'ultimate-slider' ) }
+						onClick={ addNewSlide }
+					/>
+				</BlockControls>
+
 			</div>
 		</>
 	);

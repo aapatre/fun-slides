@@ -62,7 +62,8 @@ function Edit(_ref) {
   } = _ref;
   const {
     totalSlides,
-    tempTotalSlides
+    tempTotalSlides,
+    slideshow
   } = attributes;
 
   function changeTempTotalSlides(newTempTotalSlides) {
@@ -74,6 +75,13 @@ function Edit(_ref) {
   function changeTotalSlides() {
     setAttributes({
       totalSlides: tempTotalSlides
+    });
+  }
+
+  function addNewSlide() {
+    const new_slideshow = [...slideshow, 'y'];
+    setAttributes({
+      slideshow: new_slideshow
     });
   }
 
@@ -89,7 +97,13 @@ function Edit(_ref) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     onClick: changeTotalSlides,
     variant: "primary"
-  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hello from the editor!', 'fun-slides'), "Total: ", totalSlides));
+  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), slideshow.map((slide, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Slide Index: ", index);
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
+    icon: "plus",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("New Slide", 'ultimate-slider'),
+    onClick: addNewSlide
+  }))));
 }
 
 /***/ }),

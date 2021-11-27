@@ -21,6 +21,10 @@
 		"tempTotalSlides": {
 			"type": "integer",
 			"default": 3
+		},
+		"slideshow": {
+			"type": "array",
+			"default": []
 		}
 	}
 }
