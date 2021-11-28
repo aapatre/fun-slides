@@ -22,10 +22,25 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save( { attributes } ) {
+
+	const {
+		totalSlides,
+		tempTotalSlides,
+		slideshow,
+		showNavArrows,
+		showSliderDots,
+		autoplay,
+		slideTimer
+	} = attributes;
+
+	console.log(attributes);
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __( 'Fun Slides – hello from the saved content!', 'fun-slides' ) }
+		<p className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
+			{ console.log( "Yo2" ) }
+			<br/>
+			{ __( 'Fun Slides ', 'fun-slides' ) }
 		</p>
 	);
 }
