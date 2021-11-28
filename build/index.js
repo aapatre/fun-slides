@@ -73,7 +73,11 @@ function Edit(_ref) {
   const {
     totalSlides,
     tempTotalSlides,
-    slideshow
+    slideshow,
+    showNavArrows,
+    showSliderDots,
+    autoplay,
+    slideTimer
   } = attributes;
   const [currentSlideIndex, setCurrentSlideIndex] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
 
@@ -157,33 +161,73 @@ function Edit(_ref) {
 
   function changeSlideIndex(oldIndex, newIndex) {
     setCurrentSlideIndex(newIndex);
+  } // Slider settings attribute functions.
+
+
+  function setSlideTimer(slideTimerValue) {
+    setAttributes({
+      slideTimer: slideTimerValue
+    });
+  }
+
+  function setAutoplay(autoplayValue) {
+    setAttributes({
+      autoplay: autoplayValue
+    });
+  }
+
+  function setShowSliderDots(showSliderDotsValue) {
+    setAttributes({
+      showSliderDots: showSliderDotsValue
+    });
+  }
+
+  function setShowNavArrows(showNavArrowsValue) {
+    setAttributes({
+      showNavArrows: showNavArrowsValue
+    });
   }
 
   const funSlidesSettings = {
-    dots: true,
-    arrows: true,
+    dots: showSliderDots,
+    arrows: showNavArrows,
     autoplay: false,
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
     speed: 500,
-    // autoplaySpeed: settings.autoplaySpeed,
     accessibility: false
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides Settings', 'fun-slides'),
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
-    label: "Total Slides?",
-    value: tempTotalSlides,
-    onChange: changeTempTotalSlides,
-    min: 3,
-    max: 30
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
-    onClick: changeTotalSlides,
-    variant: "primary"
-  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    title: 'Show/Hide Slider UI Elements'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Navigation Arrows?', 'fun-slides'),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the left-right navigation arrows to change slides on front-end?', 'fun-slides'),
+    checked: showNavArrows,
+    onChange: setShowNavArrows
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Slider Dots?', 'fun-slides'),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the dots below the slider on front-end?', 'fun-slides'),
+    checked: showSliderDots,
+    onChange: setShowSliderDots
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: 'Autoplay Settings'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, "Note: "), "Autoplay is disabled in the editor for convenience.")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Autoplay?', 'fun-slides'),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable/Disable Autoplay.', 'fun-slides'),
+    checked: autoplay,
+    onChange: setAutoplay
+  }), !!autoplay && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Autoplay Timer', 'fun-slides'),
+    beforeIcon: "clock",
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Set how long should each slide be displayed in milliseconds.', 'fun-slides'),
+    value: slideTimer,
+    onChange: setSlideTimer,
+    initialPosition: slideTimer,
+    min: 1000,
+    max: 20000
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-parent-wrapper"
   }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), slideshow[0] === undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "Add a slide with the ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     class: "dashicons dashicons-plus"
@@ -221,7 +265,7 @@ function Edit(_ref) {
     icon: "plus",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("New Slide", 'ultimate-slider'),
     onClick: addNewSlide
-  }), slideshow[currentSlideIndex].mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
+  }), slideshow.length > 0 && slideshow[currentSlideIndex].mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
     value: slideshow[currentSlideIndex].slideLink,
     searchInputPlaceholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add link to the slide", 'fun-slides'),
     onChange: slideLinkObj => onChangeSlideLink(slideLinkObj, currentSlideIndex)

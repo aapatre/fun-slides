@@ -29,7 +29,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton, CheckboxControl } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
 
@@ -51,7 +51,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	const {
 		totalSlides,
 		tempTotalSlides,
-		slideshow
+		slideshow,
+		showNavArrows,
+		showSliderDots,
+		autoplay,
+		slideTimer
 	} = attributes;
 
 	const [ currentSlideIndex, setCurrentSlideIndex ] = useState( 0 );
@@ -144,43 +148,78 @@ export default function Edit( { attributes, setAttributes } ) {
 		setCurrentSlideIndex( newIndex );
 	}
 
+	// Slider settings attribute functions.
+
+	function setSlideTimer( slideTimerValue ) {
+		setAttributes( { slideTimer: slideTimerValue } );
+	}
+
+	function setAutoplay( autoplayValue ) {
+		setAttributes( { autoplay: autoplayValue } );
+	}
+
+	function setShowSliderDots( showSliderDotsValue ) {
+		setAttributes( { showSliderDots: showSliderDotsValue } );
+	}
+
+	function setShowNavArrows( showNavArrowsValue ) {
+		setAttributes( { showNavArrows: showNavArrowsValue } );
+	}
+
 	const funSlidesSettings = {
-		dots: true,
-		arrows: true,
+		dots: showSliderDots,
+		arrows: showNavArrows,
 		autoplay: false,
 		pauseOnHover: false,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		infinite: true,
 		speed: 500,
-		// autoplaySpeed: settings.autoplaySpeed,
 		accessibility: false
 	};
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody
-					title={ __( 'Fun Slides Settings', 'fun-slides' ) }
-					initialOpen={ true }
-				>
-					<PanelRow>
+				<PanelBody title={ 'Show/Hide Slider UI Elements' }>			
+					<CheckboxControl
+						label={ __( 'Show Navigation Arrows?', 'fun-slides' ) }
+						help={ __( 'Display the left-right navigation arrows to change slides on front-end?', 'fun-slides' ) }
+						checked={ showNavArrows }
+						onChange={ setShowNavArrows }
+					/>
+					<CheckboxControl
+						label={ __( 'Show Slider Dots?', 'fun-slides' ) }
+						help={ __( 'Display the dots below the slider on front-end?', 'fun-slides' ) }
+						checked={ showSliderDots }
+						onChange={ setShowSliderDots }
+					/>
+				</PanelBody>
+				<PanelBody title={ 'Autoplay Settings' }>
+
+					<span><i><strong>Note: </strong>Autoplay is disabled in the editor for convenience.</i></span>
+
+					<hr/>
+
+					<CheckboxControl
+						label={ __( 'Enable Autoplay?', 'fun-slides' ) }
+						help={ __( 'Enable/Disable Autoplay.', 'fun-slides' ) }
+						checked={ autoplay }
+						onChange={ setAutoplay }
+					/>
+					{ !! autoplay && (
 						<RangeControl
-							label="Total Slides?"
-							value={ tempTotalSlides }
-							onChange={ changeTempTotalSlides }
-							min={ 3 }
-							max={ 30 }
+							label={ __( 'Autoplay Timer', 'fun-slides' ) }
+							beforeIcon="clock"
+							help={ __( 'Set how long should each slide be displayed in milliseconds.', 'fun-slides' ) }
+							value={ slideTimer }
+							onChange={ setSlideTimer }
+							initialPosition={ slideTimer }
+							min={ 1000 }
+							max={ 20000 }
 						/>
-					</PanelRow>
-					<PanelRow>
-						<Button
-								onClick= { changeTotalSlides }
-								variant= 'primary'
-							>
-								Confirm
-						</Button>
-					</PanelRow>
+						)
+					}
 				</PanelBody>
 			</InspectorControls>
 			<div className="fun-slides-parent-wrapper" { ...useBlockProps() }>
@@ -248,7 +287,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( "New Slide", 'ultimate-slider' ) }
 						onClick={ addNewSlide }
 					/>
-					{ ( slideshow[currentSlideIndex].mediaSrc != "" ) && (
+					{ ( (slideshow.length > 0) && ( slideshow[currentSlideIndex].mediaSrc != "" ) ) && (
 						<LinkControl
 							value={ slideshow[currentSlideIndex].slideLink }
 							searchInputPlaceholder={ __( "Add link to the slide", 'fun-slides' ) }
