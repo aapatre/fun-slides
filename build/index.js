@@ -92,33 +92,35 @@ function Edit(_ref) {
   function addNewSlide(newSlide) {
     const new_slideshow = [...slideshow, {
       mediaSrc: "",
-      mediaType: ""
+      mediaType: "",
+      ctaContent: ""
     }];
     setAttributes({
       slideshow: new_slideshow
     });
   }
 
-  function changeMediaSrc(newMedia) {
-    console.log(currentSlideIndex);
-    console.log(newMedia); // setAttributes( { slideshow: {
-    // 		...slideshow,
-    // 		... {
+  function changeMediaSrc(newMedia, slideIndex) {
+    console.log(slideIndex);
+    console.log(newMedia); // const newEntry = [...slideshow, { 
     // 			mediaSrc: newMedia.url,
     // 			mediaType: newMedia.type
-    // 		}
-    // } } );
+    //  }];
+    // setAttributes( { slideshow: newEntry } );
 
     setAttributes({
       slideshow: slideshow.map((slide, index) => {
-        if (index == currentSlideIndex) {
+        if (index == slideIndex) {
           return { ...slide,
             mediaSrc: newMedia.url,
             mediaType: newMedia.type
           };
         }
+
+        return slide;
       })
-    });
+    }); // const newObj = {...slideshow[slideIndex],  }
+
     console.log({
       slideshow
     });
@@ -158,11 +160,11 @@ function Edit(_ref) {
   }, funSlidesSettings), slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "fun-slide-slide"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Slide Index: ", index), slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Slide Index: ", index), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Current Index: ", currentSlideIndex), slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
       labels: {
         title: "Choose Media for the Slide"
       },
-      onSelect: changeMediaSrc,
+      onSelect: mediaObj => changeMediaSrc(mediaObj, index),
       accept: "video/*, image/*",
       allowedTypes: ["video", "image"]
     }), slide.mediaType, slide.mediaSrc);

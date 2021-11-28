@@ -61,6 +61,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			{
 				mediaSrc: "",
 				mediaType: "",
+				ctaContent: ""
 			}
 		];
 
@@ -68,33 +69,31 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	}
 
-	function changeMediaSrc( newMedia ) {
+	function changeMediaSrc( newMedia, slideIndex ) {
 
-		console.log(currentSlideIndex);
+		console.log(slideIndex);
 		console.log(newMedia);
 
-		// setAttributes( { slideshow: {
-		// 		...slideshow,
-		// 		... {
+		// const newEntry = [...slideshow, { 
 		// 			mediaSrc: newMedia.url,
 		// 			mediaType: newMedia.type
-		// 		}
-		// } } );
+		//  }];
+
+		// setAttributes( { slideshow: newEntry } );
 
 		setAttributes( { slideshow: slideshow.map( ( slide, index )  => {
 
-				if ( index == currentSlideIndex ) {
-					return(
-						{
-							...slide,
-							mediaSrc: newMedia.url,
-							mediaType: newMedia.type
-						}
-					);
+				if ( index == slideIndex ) {
+					return ({ ...slide, mediaSrc: newMedia.url, mediaType: newMedia.type });
 				}
+
+				return slide;
 
 			} )
 		} );
+
+		// const newObj = {...slideshow[slideIndex],  }
+
 
 		console.log({slideshow});
 	}
@@ -157,13 +156,14 @@ export default function Edit( { attributes, setAttributes } ) {
 						return(
 							<div className="fun-slide-slide">
 								<p>Slide Index: {index}</p>
+								<p>Current Index: {currentSlideIndex}</p>
 								{ ( slide.mediaSrc === "" ) && (
 									
 									<MediaPlaceholder
 										labels = { {
 											title: "Choose Media for the Slide"
 										} }
-										onSelect = { changeMediaSrc }
+										onSelect = { (mediaObj) => changeMediaSrc( mediaObj, index ) }
 										accept = "video/*, image/*"
 										allowedTypes = { [ "video", "image" ] }
 									/>
