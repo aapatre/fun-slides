@@ -93,7 +93,7 @@ function Edit(_ref) {
     const new_slideshow = [...slideshow, {
       mediaSrc: "",
       mediaType: "",
-      ctaContent: ""
+      ctaText: ""
     }];
     setAttributes({
       slideshow: new_slideshow
@@ -123,6 +123,20 @@ function Edit(_ref) {
 
     console.log({
       slideshow
+    });
+  }
+
+  function onChangeCtaText(newCtaText, slideIndex) {
+    setAttributes({
+      slideshow: slideshow.map((slide, index) => {
+        if (index == slideIndex) {
+          return { ...slide,
+            ctaText: newCtaText
+          };
+        }
+
+        return slide;
+      })
     });
   }
 
@@ -160,14 +174,29 @@ function Edit(_ref) {
   }, funSlidesSettings), slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "fun-slide-slide"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Slide Index: ", index), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Current Index: ", currentSlideIndex), slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
+    }, slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
       labels: {
         title: "Choose Media for the Slide"
       },
       onSelect: mediaObj => changeMediaSrc(mediaObj, index),
       accept: "video/*, image/*",
       allowedTypes: ["video", "image"]
-    }), slide.mediaType, slide.mediaSrc);
+    }), slide.mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+      src: slide.mediaSrc,
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides Media', 'fun-slides')
+    }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+      src: slide.mediaSrc,
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides Media', 'fun-slides'),
+      controls: true
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+      className: "fun-slides-cta-richtext",
+      key: "editable",
+      tagName: "span",
+      value: slide.ctaText,
+      onChange: ctaEditObj => onChangeCtaText(ctaEditObj, index),
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add CTA...'),
+      allowedFormats: ['core/bold', 'core/italic', 'core/link']
+    })));
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToolbarButton, {
     icon: "plus",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("New Slide", 'ultimate-slider'),

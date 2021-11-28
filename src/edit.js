@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { BlockControls, InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
+import { BlockControls, InspectorControls, MediaPlaceholder, RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -61,7 +61,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			{
 				mediaSrc: "",
 				mediaType: "",
-				ctaContent: ""
+				ctaText: ""
 			}
 		];
 
@@ -96,6 +96,21 @@ export default function Edit( { attributes, setAttributes } ) {
 
 
 		console.log({slideshow});
+	}
+
+	function onChangeCtaText( newCtaText, slideIndex ) {
+
+		setAttributes( { slideshow: slideshow.map( ( slide, index )  => {
+
+				if ( index == slideIndex ) {
+					return ({ ...slide, ctaText: newCtaText });
+				}
+
+				return slide;
+
+			} )
+		} );
+
 	}
 
 	function changeSlideIndex( oldIndex, newIndex ) {
@@ -155,8 +170,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					{ slideshow.map( (slide, index) => {
 						return(
 							<div className="fun-slide-slide">
-								<p>Slide Index: {index}</p>
-								<p>Current Index: {currentSlideIndex}</p>
+
 								{ ( slide.mediaSrc === "" ) && (
 									
 									<MediaPlaceholder
@@ -169,8 +183,31 @@ export default function Edit( { attributes, setAttributes } ) {
 									/>
 
 								) }
-								{ slide.mediaType }
-								{ slide.mediaSrc }
+
+								{ ( slide.mediaSrc != "" ) && (
+
+									<>
+
+										{ ( slide.mediaType === "image" ) && (
+											<img src = { slide.mediaSrc } alt = { __('Fun Slides Media', 'fun-slides') } />
+										) }
+
+										{ ( slide.mediaType === "video" ) && (
+											<video src = { slide.mediaSrc } alt = { __('Fun Slides Media', 'fun-slides') } controls />
+										) }
+										
+										<RichText
+											className="fun-slides-cta-richtext"
+											key="editable"
+											tagName="span"
+											value={ slide.ctaText }
+											onChange={ (ctaEditObj) => onChangeCtaText( ctaEditObj, index ) }
+											placeholder={ __( 'Add CTA...' ) }
+											allowedFormats={ [ 'core/bold', 'core/italic', 'core/link' ] } />
+
+									</>
+
+								) }
 							</div>
 						);
 					} ) }

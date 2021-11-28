@@ -9,6 +9,46 @@
 .wp-block-fun-slides-fun-slides {
   border: 1px dotted #f00;
 }
+
+.fun-slides-parent-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fun-slides-parent-wrapper .fun-slides-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fun-slides-parent-wrapper .fun-slides-slide .fun-slides-slide-media {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+.fun-slides-parent-wrapper .fun-slides-slide .fun-slides-slide-media .fun-slides-cta-richtext {
+  background-color: red;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+}
+.fun-slides-parent-wrapper .slick-dots {
+  left: 0;
+  padding: 0.5% 1%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background: linear-gradient(180deg, rgba(75, 75, 75, 0) 0%, white 100%);
+  border-radius: 5px;
+}
 /*!*************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/slick-carousel/slick/slick.css ***!
   \*************************************************************************************************************************************************************************************************/
