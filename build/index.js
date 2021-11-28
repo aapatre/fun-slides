@@ -152,8 +152,9 @@ function Edit(_ref) {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
-    speed: 500 // autoplaySpeed: settings.autoplaySpeed,
-
+    speed: 500,
+    // autoplaySpeed: settings.autoplaySpeed,
+    accessibility: false
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides Settings', 'fun-slides'),
@@ -167,13 +168,15 @@ function Edit(_ref) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
     onClick: changeTotalSlides,
     variant: "primary"
-  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), slideshow[0] === undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "Add a slide with the ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+  }, "Confirm")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: "fun-slides-parent-wrapper"
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), slideshow[0] === undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "Add a slide with the ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     class: "dashicons dashicons-plus"
   }), " icon on block toolbar"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     beforeChange: changeSlideIndex
   }, funSlidesSettings), slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "fun-slide-slide"
+      className: "fun-slides-slide"
     }, slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
       labels: {
         title: "Choose Media for the Slide"
@@ -181,7 +184,9 @@ function Edit(_ref) {
       onSelect: mediaObj => changeMediaSrc(mediaObj, index),
       accept: "video/*, image/*",
       allowedTypes: ["video", "image"]
-    }), slide.mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+    }), slide.mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "fun-slides-slide-media"
+    }, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
       src: slide.mediaSrc,
       alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides Media', 'fun-slides')
     }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {

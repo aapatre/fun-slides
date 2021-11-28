@@ -25,6 +25,22 @@
 		"slideshow": {
 			"type": "array",
 			"default": []
+		},
+		"slideTimer": {
+			"type": "integer",
+			"default": 3000
+		},
+		"showSliderDots": {
+			"type": "boolean",
+			"default": true
+		},
+		"showNavArrows": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": true
 		}
 	}
 }

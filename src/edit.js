@@ -127,6 +127,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		infinite: true,
 		speed: 500,
 		// autoplaySpeed: settings.autoplaySpeed,
+		accessibility: false
 	};
 
 	return (
@@ -155,7 +156,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<div { ...useBlockProps() }>
+			<div className="fun-slides-parent-wrapper" { ...useBlockProps() }>
 
 				{/* If no slides in the slideshow, tell user to add one */}
 
@@ -169,7 +170,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				>
 					{ slideshow.map( (slide, index) => {
 						return(
-							<div className="fun-slide-slide">
+							<div className="fun-slides-slide">
 
 								{ ( slide.mediaSrc === "" ) && (
 									
@@ -186,7 +187,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 								{ ( slide.mediaSrc != "" ) && (
 
-									<>
+									<div className="fun-slides-slide-media">
 
 										{ ( slide.mediaType === "image" ) && (
 											<img src = { slide.mediaSrc } alt = { __('Fun Slides Media', 'fun-slides') } />
@@ -205,7 +206,7 @@ export default function Edit( { attributes, setAttributes } ) {
 											placeholder={ __( 'Add CTA...' ) }
 											allowedFormats={ [ 'core/bold', 'core/italic', 'core/link' ] } />
 
-									</>
+									</div>
 
 								) }
 							</div>
