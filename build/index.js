@@ -93,7 +93,8 @@ function Edit(_ref) {
     const new_slideshow = [...slideshow, {
       mediaSrc: "",
       mediaType: "",
-      ctaText: ""
+      ctaText: "",
+      slideLink: ""
     }];
     setAttributes({
       slideshow: new_slideshow
@@ -132,6 +133,20 @@ function Edit(_ref) {
         if (index == slideIndex) {
           return { ...slide,
             ctaText: newCtaText
+          };
+        }
+
+        return slide;
+      })
+    });
+  }
+
+  function onChangeSlideLink(newSlideLink, slideIndex) {
+    setAttributes({
+      slideshow: slideshow.map((slide, index) => {
+        if (index == slideIndex) {
+          return { ...slide,
+            slideLink: newSlideLink
           };
         }
 
@@ -206,6 +221,10 @@ function Edit(_ref) {
     icon: "plus",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("New Slide", 'ultimate-slider'),
     onClick: addNewSlide
+  }), slideshow[currentSlideIndex].mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
+    value: slideshow[currentSlideIndex].slideLink,
+    searchInputPlaceholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add link to the slide", 'fun-slides'),
+    onChange: slideLinkObj => onChangeSlideLink(slideLinkObj, currentSlideIndex)
   }))));
 }
 

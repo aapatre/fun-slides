@@ -11,7 +11,16 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { BlockControls, InspectorControls, MediaPlaceholder, RichText, useBlockProps } from '@wordpress/block-editor';
+import {
+
+	BlockControls,
+	InspectorControls,
+	MediaPlaceholder,
+	RichText,
+	useBlockProps,
+	__experimentalLinkControl as LinkControl,	// Since the LinkControl component is experimental.
+
+} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -61,7 +70,8 @@ export default function Edit( { attributes, setAttributes } ) {
 			{
 				mediaSrc: "",
 				mediaType: "",
-				ctaText: ""
+				ctaText: "",
+				slideLink: ""
 			}
 		];
 
@@ -109,6 +119,23 @@ export default function Edit( { attributes, setAttributes } ) {
 				return slide;
 
 			} )
+
+		} );
+
+	}
+
+	function onChangeSlideLink( newSlideLink, slideIndex ) {
+
+		setAttributes( { slideshow: slideshow.map( ( slide, index )  => {
+
+				if ( index == slideIndex ) {
+					return ({ ...slide, slideLink: newSlideLink });
+				}
+
+				return slide;
+
+			} )
+
 		} );
 
 	}
@@ -221,6 +248,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( "New Slide", 'ultimate-slider' ) }
 						onClick={ addNewSlide }
 					/>
+					{ ( slideshow[currentSlideIndex].mediaSrc != "" ) && (
+						<LinkControl
+							value={ slideshow[currentSlideIndex].slideLink }
+							searchInputPlaceholder={ __( "Add link to the slide", 'fun-slides' ) }
+							onChange={ ( slideLinkObj ) => onChangeSlideLink( slideLinkObj, currentSlideIndex ) }
+						/>
+					) }
 				</BlockControls>
 
 			</div>
