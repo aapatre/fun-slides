@@ -106,13 +106,6 @@ function Edit(_ref) {
   }
 
   function changeMediaSrc(newMedia, slideIndex) {
-    console.log(slideIndex);
-    console.log(newMedia); // const newEntry = [...slideshow, { 
-    // 			mediaSrc: newMedia.url,
-    // 			mediaType: newMedia.type
-    //  }];
-    // setAttributes( { slideshow: newEntry } );
-
     setAttributes({
       slideshow: slideshow.map((slide, index) => {
         if (index == slideIndex) {
@@ -124,10 +117,6 @@ function Edit(_ref) {
 
         return slide;
       })
-    }); // const newObj = {...slideshow[slideIndex],  }
-
-    console.log({
-      slideshow
     });
   }
 

@@ -85,16 +85,6 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	function changeMediaSrc( newMedia, slideIndex ) {
 
-		console.log(slideIndex);
-		console.log(newMedia);
-
-		// const newEntry = [...slideshow, { 
-		// 			mediaSrc: newMedia.url,
-		// 			mediaType: newMedia.type
-		//  }];
-
-		// setAttributes( { slideshow: newEntry } );
-
 		setAttributes( { slideshow: slideshow.map( ( slide, index )  => {
 
 				if ( index == slideIndex ) {
@@ -106,10 +96,6 @@ export default function Edit( { attributes, setAttributes } ) {
 			} )
 		} );
 
-		// const newObj = {...slideshow[slideIndex],  }
-
-
-		console.log({slideshow});
 	}
 
 	function onChangeCtaText( newCtaText, slideIndex ) {
