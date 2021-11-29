@@ -386,7 +386,7 @@ function save(_ref) {
     autoplay,
     slideTimer
   } = attributes;
-  const sliderSettings = '{ "autoplay":' + true + '}';
+  const sliderSettings = '{ "dots":' + showSliderDots + ', "arrows":' + showNavArrows + ', "autoplay":' + autoplay + ', "autoplaySpeed":' + slideTimer + '}';
   console.log(sliderSettings); // Create a new array of only those slides where the media has been selected.
 
   const frontend_slideshow = [];
@@ -398,6 +398,7 @@ function save(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-frontend-wrapper"
   }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    "data-slick": sliderSettings,
     "data-sliderAutoplay": autoplay,
     "data-sliderTimer": slideTimer,
     "data-sliderArrows": showNavArrows,
@@ -405,8 +406,7 @@ function save(_ref) {
     className: "fun-slides-frontend-slideshow"
   }, frontend_slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "fun-slides-frontend-slide",
-      "data-slick": sliderSettings
+      className: "fun-slides-frontend-slide"
     }, slide.mediaType === "image" && slide.slideLink == "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
       className: "fun-slides-frontend-image",
       src: slide.mediaSrc,

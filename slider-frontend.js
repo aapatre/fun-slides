@@ -1,3 +1,8 @@
 jQuery(document).ready(function(){
-    jQuery('.fun-slides-frontend-slideshow').slick();
+
+  // console.log(jQuery('.fun-slides-frontend-slideshow').data('sliderAutoplay'));
+
+  jQuery('.fun-slides-frontend-slideshow').slick(
+
+  );
 });

@@ -34,7 +34,7 @@ export default function save( { attributes } ) {
 		slideTimer
 	} = attributes;
 
-	const sliderSettings = '{ "autoplay":'+ true +'}';
+	const sliderSettings = '{ "dots":'+ showSliderDots +', "arrows":'+ showNavArrows +', "autoplay":'+ autoplay +', "autoplaySpeed":'+ slideTimer +'}';
 
 	console.log(sliderSettings);
 
@@ -58,11 +58,11 @@ export default function save( { attributes } ) {
 			{ slideTimer }
 			{ showSliderDots }
 			{ showNavArrows } */}
-			<div data-sliderAutoplay={autoplay} data-sliderTimer={slideTimer} data-sliderArrows={showNavArrows} data-sliderDots={showSliderDots} className="fun-slides-frontend-slideshow">
+			<div data-slick={sliderSettings} data-sliderAutoplay={autoplay} data-sliderTimer={slideTimer} data-sliderArrows={showNavArrows} data-sliderDots={showSliderDots} className="fun-slides-frontend-slideshow">
 				{ frontend_slideshow.map( (slide, index) => {
 
 						return(
-							<div className="fun-slides-frontend-slide" data-slick={sliderSettings}>
+							<div className="fun-slides-frontend-slide">
 
 								{/* If no slide link is prensent */}
 								{ ( slide.mediaType === "image" && slide.slideLink == "" ) && (
