@@ -386,7 +386,7 @@ function save(_ref) {
     autoplay,
     slideTimer
   } = attributes;
-  const sliderSettings = '{ "autoplay:"' + autoplay + '}';
+  const sliderSettings = '{ "autoplay":' + true + '}';
   console.log(sliderSettings); // Create a new array of only those slides where the media has been selected.
 
   const frontend_slideshow = [];

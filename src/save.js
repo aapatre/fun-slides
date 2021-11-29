@@ -34,7 +34,7 @@ export default function save( { attributes } ) {
 		slideTimer
 	} = attributes;
 
-	const sliderSettings = '{ "autoplay:"'+ autoplay +'}';
+	const sliderSettings = '{ "autoplay":'+ true +'}';
 
 	console.log(sliderSettings);
 

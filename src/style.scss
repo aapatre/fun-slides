@@ -5,17 +5,30 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.fun-slides-frontend-slideshow {
+.wp-block-fun-slides-fun-slides {
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 350px;
+}
+
+.fun-slides-frontend-slideshow {
+    display: flex !important;
     justify-content: center;
     align-items: center;
 
     width: 500px;
     height: 300px;
 
+    margin: 2.5rem auto;
+
     .fun-slides-frontend-slide {
-        width: auto;
-        height: 300px;
+        // width: auto;
+        // height: 300px;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
 
         img, a > img {
             width: auto;
@@ -28,4 +41,8 @@
         }
 
     }
+}
+
+.slick-slider {
+    margin: 2.5rem 0;
 }
