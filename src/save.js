@@ -54,10 +54,7 @@ export default function save( { attributes } ) {
 
 	return (
 		<div className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
-			{/* { autoplay }
-			{ slideTimer }
-			{ showSliderDots }
-			{ showNavArrows } */}
+
 			<div data-slick={sliderSettings} data-sliderAutoplay={autoplay} data-sliderTimer={slideTimer} data-sliderArrows={showNavArrows} data-sliderDots={showSliderDots} className="fun-slides-frontend-slideshow">
 				{ frontend_slideshow.map( (slide, index) => {
 
