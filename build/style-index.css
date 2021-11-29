@@ -35,6 +35,10 @@
   width: auto;
   height: 300px;
 }
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta {
+  position: absolute;
+  bottom: 20%;
+}
 
 .slick-slider {
   margin: 2.5rem 0;
