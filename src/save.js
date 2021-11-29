@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -59,11 +59,14 @@ export default function save( { attributes } ) {
 
 						return(
 							<div className="fun-slides-frontend-slide">
-								{ (slide.mediaType === "image") && (
+								{ ( slide.mediaType === "image" ) && (
 									<img src={slide.mediaSrc} alt="slideshow" />
 								) }
-								{ (slide.mediaType === "video") && (
+								{ ( slide.mediaType === "video" ) && (
 									<video src={slide.mediaSrc} alt="slideshow" />
+								) }
+								{ ( slide.ctaText != "" ) && (
+									<RichText.Content tagName="p" value={ slide.ctaText } />
 								) }
 							</div>
 						);

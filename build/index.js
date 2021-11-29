@@ -406,6 +406,9 @@ function save(_ref) {
     }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
       src: slide.mediaSrc,
       alt: "slideshow"
+    }), slide.ctaText != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+      tagName: "p",
+      value: slide.ctaText
     }));
   })));
 }
