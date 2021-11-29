@@ -58,7 +58,7 @@ export default function save( { attributes } ) {
 			{ slideTimer }
 			{ showSliderDots }
 			{ showNavArrows } */}
-			<div className="fun-slides-frontend-slideshow">
+			<div data-sliderAutoplay={autoplay} data-sliderTimer={slideTimer} data-sliderArrows={showNavArrows} data-sliderDots={showSliderDots} className="fun-slides-frontend-slideshow">
 				{ frontend_slideshow.map( (slide, index) => {
 
 						return(

@@ -398,6 +398,10 @@ function save(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-frontend-wrapper"
   }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    "data-sliderAutoplay": autoplay,
+    "data-sliderTimer": slideTimer,
+    "data-sliderArrows": showNavArrows,
+    "data-sliderDots": showSliderDots,
     className: "fun-slides-frontend-slideshow"
   }, frontend_slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
