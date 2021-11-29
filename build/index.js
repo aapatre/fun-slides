@@ -385,11 +385,29 @@ function save(_ref) {
     showSliderDots,
     autoplay,
     slideTimer
-  } = attributes;
-  console.log(attributes);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  } = attributes; // Create a new array of only those slides where the media has been selected.
+
+  const frontend_slideshow = [];
+  slideshow.map((slide, index) => {
+    if (slide.mediaSrc != "") {
+      frontend_slideshow.push(slide);
+    }
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-frontend-wrapper"
-  }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), console.log("Yo2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("br", null), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fun Slides ', 'fun-slides'));
+  }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "fun-slides-frontend-slideshow"
+  }, frontend_slideshow.map((slide, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "fun-slides-frontend-slide"
+    }, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+      src: slide.mediaSrc,
+      alt: "slideshow"
+    }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+      src: slide.mediaSrc,
+      alt: "slideshow"
+    }));
+  })));
 }
 
 /***/ }),

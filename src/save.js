@@ -34,13 +34,43 @@ export default function save( { attributes } ) {
 		slideTimer
 	} = attributes;
 
-	console.log(attributes);
+
+	// Create a new array of only those slides where the media has been selected.
+
+	const frontend_slideshow = [];
+
+	slideshow.map( (slide, index) => {
+
+			if(slide.mediaSrc != "") {
+				frontend_slideshow.push(slide);
+			}
+
+		}
+	);
 
 	return (
-		<p className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
-			{ console.log( "Yo2" ) }
-			<br/>
-			{ __( 'Fun Slides ', 'fun-slides' ) }
-		</p>
+		<div className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
+			{/* { autoplay }
+			{ slideTimer }
+			{ showSliderDots }
+			{ showNavArrows } */}
+			<div className="fun-slides-frontend-slideshow">
+				{ frontend_slideshow.map( (slide, index) => {
+
+						return(
+							<div className="fun-slides-frontend-slide">
+								{ (slide.mediaType === "image") && (
+									<img src={slide.mediaSrc} alt="slideshow" />
+								) }
+								{ (slide.mediaType === "video") && (
+									<video src={slide.mediaSrc} alt="slideshow" />
+								) }
+							</div>
+						);
+
+					} )
+				}
+			</div>
+		</div>
 	);
 }

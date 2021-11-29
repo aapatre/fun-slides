@@ -39,7 +39,8 @@ add_action('wp_enqueue_scripts', 'enqueue_slick_scripts_and_styles');
 
 function enqueue_slider_frontend_script()
 {
-    wp_register_script('slider-frontend', plugins_url('/slider-frontend.js', __FILE__), array( 'jquery' ));
+    $slider_frontend_version = time();  // no caching in development
+    wp_register_script('slider-frontend', plugins_url('/slider-frontend.js', __FILE__), array( 'jquery' ), $slider_frontend_version);
     wp_enqueue_script('slider-frontend');
 }
 add_action('wp_enqueue_scripts', 'enqueue_slider_frontend_script');
