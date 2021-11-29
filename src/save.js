@@ -34,6 +34,10 @@ export default function save( { attributes } ) {
 		slideTimer
 	} = attributes;
 
+	const sliderSettings = '{ "autoplay:"'+ autoplay +'}';
+
+	console.log(sliderSettings);
+
 
 	// Create a new array of only those slides where the media has been selected.
 
@@ -58,16 +62,33 @@ export default function save( { attributes } ) {
 				{ frontend_slideshow.map( (slide, index) => {
 
 						return(
-							<div className="fun-slides-frontend-slide">
-								{ ( slide.mediaType === "image" ) && (
-									<img src={slide.mediaSrc} alt="slideshow" />
+							<div className="fun-slides-frontend-slide" data-slick={sliderSettings}>
+
+								{/* If no slide link is prensent */}
+								{ ( slide.mediaType === "image" && slide.slideLink == "" ) && (
+									<img className="fun-slides-frontend-image" src={slide.mediaSrc} alt="slideshow" />
 								) }
-								{ ( slide.mediaType === "video" ) && (
-									<video src={slide.mediaSrc} alt="slideshow" />
+								{ ( slide.mediaType === "video" && slide.slideLink == "" ) && (
+									<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" />
 								) }
+
+								{/* If slide link is present */}
+								{ ( slide.mediaType === "image" && slide.slideLink != "" ) && (
+									<a href={slide.slideLink} >
+										<img className="fun-slides-frontend-image" src={slide.mediaSrc} alt="slideshow" />
+									</a>
+								) }
+								{ ( slide.mediaType === "video" && slide.slideLink != "" ) && (
+									<a href={slide.slideLink} >
+										<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" />
+									</a>
+								) }
+
+								{/* Display CTA if not empty */}
 								{ ( slide.ctaText != "" ) && (
-									<RichText.Content tagName="p" value={ slide.ctaText } />
+									<RichText.Content className="fun-slides-frontend-cta" tagName="p" value={ slide.ctaText } />
 								) }
+
 							</div>
 						);
 

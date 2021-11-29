@@ -385,7 +385,9 @@ function save(_ref) {
     showSliderDots,
     autoplay,
     slideTimer
-  } = attributes; // Create a new array of only those slides where the media has been selected.
+  } = attributes;
+  const sliderSettings = '{ "autoplay:"' + autoplay + '}';
+  console.log(sliderSettings); // Create a new array of only those slides where the media has been selected.
 
   const frontend_slideshow = [];
   slideshow.map((slide, index) => {
@@ -399,14 +401,30 @@ function save(_ref) {
     className: "fun-slides-frontend-slideshow"
   }, frontend_slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "fun-slides-frontend-slide"
-    }, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+      className: "fun-slides-frontend-slide",
+      "data-slick": sliderSettings
+    }, slide.mediaType === "image" && slide.slideLink == "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+      className: "fun-slides-frontend-image",
       src: slide.mediaSrc,
       alt: "slideshow"
-    }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+    }), slide.mediaType === "video" && slide.slideLink == "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+      className: "fun-slides-frontend-video",
       src: slide.mediaSrc,
       alt: "slideshow"
-    }), slide.ctaText != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+    }), slide.mediaType === "image" && slide.slideLink != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: slide.slideLink
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+      className: "fun-slides-frontend-image",
+      src: slide.mediaSrc,
+      alt: "slideshow"
+    })), slide.mediaType === "video" && slide.slideLink != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: slide.slideLink
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+      className: "fun-slides-frontend-video",
+      src: slide.mediaSrc,
+      alt: "slideshow"
+    })), slide.ctaText != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+      className: "fun-slides-frontend-cta",
       tagName: "p",
       value: slide.ctaText
     }));

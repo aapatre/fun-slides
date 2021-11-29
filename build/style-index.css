@@ -7,5 +7,24 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.fun-slides-frontend-slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide {
+  width: auto;
+  height: 300px;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide img, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > img {
+  width: auto;
+  height: 300px;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide video, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > video {
+  width: auto;
+  height: 300px;
+}
 
 /*# sourceMappingURL=style-index.css.map*/
