@@ -34,7 +34,7 @@ export default function save( { attributes } ) {
 		slideTimer
 	} = attributes;
 
-	const sliderSettings = '{ "dots":'+ showSliderDots +', "arrows":'+ showNavArrows +', "autoplay":'+ autoplay +', "autoplaySpeed":'+ slideTimer +'}';
+	const sliderSettings = '{ "dots":'+ showSliderDots +', "arrows":'+ showNavArrows +', "autoplay":'+ autoplay +', "autoplaySpeed":'+ slideTimer +' }';
 
 	console.log(sliderSettings);
 
