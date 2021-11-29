@@ -386,8 +386,7 @@ function save(_ref) {
     autoplay,
     slideTimer
   } = attributes;
-  const sliderSettings = '{ "dots":' + showSliderDots + ', "arrows":' + showNavArrows + ', "autoplay":' + autoplay + ', "autoplaySpeed":' + slideTimer + ' }';
-  console.log(sliderSettings); // Create a new array of only those slides where the media has been selected.
+  const sliderSettings = '{ "dots":' + showSliderDots + ', "arrows":' + showNavArrows + ', "autoplay":' + autoplay + ', "autoplaySpeed":' + slideTimer + ' }'; // Create a new array of only those slides where the media has been selected.
 
   const frontend_slideshow = [];
   slideshow.map((slide, index) => {
