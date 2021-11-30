@@ -383,6 +383,7 @@ function save(_ref) {
       frontend_slideshow.push(slide);
     }
   });
+  console.log(frontend_slideshow);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-frontend-wrapper"
   }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -395,27 +396,21 @@ function save(_ref) {
   }, frontend_slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "fun-slides-frontend-slide"
-    }, slide.mediaType === "image" && slide.slideLink == "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+    }, slide.mediaType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
       className: "fun-slides-frontend-image",
       src: slide.mediaSrc,
       alt: "slideshow"
-    }), slide.mediaType === "video" && slide.slideLink == "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
+    }), slide.mediaType === "video" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
       className: "fun-slides-frontend-video",
       src: slide.mediaSrc,
-      alt: "slideshow"
-    }), slide.mediaType === "image" && slide.slideLink != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-      href: slide.slideLink
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
-      className: "fun-slides-frontend-image",
-      src: slide.mediaSrc,
-      alt: "slideshow"
-    })), slide.mediaType === "video" && slide.slideLink != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-      href: slide.slideLink
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("video", {
-      className: "fun-slides-frontend-video",
-      src: slide.mediaSrc,
-      alt: "slideshow"
-    })), slide.ctaText != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+      alt: "slideshow",
+      controls: true
+    }), slide.slideLink && slide.slideLink.url != "" && console.log(slide.slideLink.title), slide.slideLink && slide.slideLink.url != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: slide.slideLink.url,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "fun-slides-frontend-slidelink"
+    }), slide.ctaText != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
       className: "fun-slides-frontend-cta",
       tagName: "p",
       value: slide.ctaText

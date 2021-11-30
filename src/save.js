@@ -49,6 +49,8 @@ export default function save( { attributes } ) {
 		}
 	);
 
+	console.log(frontend_slideshow);
+
 	return (
 		<div className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
 
@@ -59,22 +61,20 @@ export default function save( { attributes } ) {
 							<div className="fun-slides-frontend-slide">
 
 								{/* If no slide link is prensent */}
-								{ ( slide.mediaType === "image" && slide.slideLink == "" ) && (
+								{ ( slide.mediaType === "image" ) && (
 									<img className="fun-slides-frontend-image" src={slide.mediaSrc} alt="slideshow" />
 								) }
-								{ ( slide.mediaType === "video" && slide.slideLink == "" ) && (
-									<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" />
+								{ ( slide.mediaType === "video" ) && (
+									<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" controls />
+								) }
+
+								{ ( slide.slideLink && slide.slideLink.url != "" ) && (
+									console.log(slide.slideLink.title)
 								) }
 
 								{/* If slide link is present */}
-								{ ( slide.mediaType === "image" && slide.slideLink != "" ) && (
-									<a href={slide.slideLink} >
-										<img className="fun-slides-frontend-image" src={slide.mediaSrc} alt="slideshow" />
-									</a>
-								) }
-								{ ( slide.mediaType === "video" && slide.slideLink != "" ) && (
-									<a href={slide.slideLink} >
-										<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" />
+								{ ( slide.slideLink && slide.slideLink.url != "" ) && (
+									<a href={slide.slideLink.url} target="_blank" rel="noopener noreferrer" className="fun-slides-frontend-slidelink" >
 									</a>
 								) }
 
