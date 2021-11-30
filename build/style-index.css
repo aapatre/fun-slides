@@ -52,4 +52,41 @@
   margin: 2.5rem 0;
 }
 
+@media only screen and (max-width: 599px) {
+  .wp-block-fun-slides-fun-slides {
+    height: 175px;
+  }
+
+  .fun-slides-frontend-slideshow {
+    width: 250px;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide {
+    width: 250px;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide > a {
+    top: 10px !important;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide img, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > img {
+    width: auto;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide video, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > video {
+    width: auto;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta {
+    bottom: 10%;
+    max-width: 100px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta a {
+    top: -140px;
+    bottom: 100px;
+    left: -40px;
+    width: 82px;
+    font-size: 10px;
+  }
+}
+
 /*# sourceMappingURL=style-index.css.map*/

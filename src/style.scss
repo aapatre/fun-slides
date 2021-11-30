@@ -61,3 +61,53 @@
 .slick-slider {
     margin: 2.5rem 0;
 }
+
+// Media Queries
+
+@media only screen and (max-width: 599px) {
+
+    .wp-block-fun-slides-fun-slides {
+        height: 175px;
+    }
+
+    .fun-slides-frontend-slideshow {
+    
+        width: 250px;
+        height: 150px;
+    
+        .fun-slides-frontend-slide {
+
+            width: 250px;
+            height: 150px;
+
+            & > a {
+                top: 10px !important;
+            }
+    
+            img, a > img {
+                width: auto;
+                height: 150px;
+            }
+    
+            video, a > video {
+                width: auto;
+                height: 150px;
+            }
+    
+            .fun-slides-frontend-cta {
+                bottom: 10%;
+                max-width: 100px;
+    
+                a {
+                    top: -140px;
+                    bottom: 100px;
+                    left: -40px;
+                    width: 82px;
+                    font-size: 10px;
+                }
+            }
+    
+        }
+    }
+
+  }
