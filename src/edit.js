@@ -134,24 +134,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		setCurrentSlideIndex( newIndex );
 	}
 
-	// Slider settings attribute functions.
-
-	function setSlideTimer( slideTimerValue ) {
-		setAttributes( { slideTimer: slideTimerValue } );
-	}
-
-	function setAutoplay( autoplayValue ) {
-		setAttributes( { autoplay: autoplayValue } );
-	}
-
-	function setShowSliderDots( showSliderDotsValue ) {
-		setAttributes( { showSliderDots: showSliderDotsValue } );
-	}
-
-	function setShowNavArrows( showNavArrowsValue ) {
-		setAttributes( { showNavArrows: showNavArrowsValue } );
-	}
-
 	const funSlidesSettings = {
 		dots: showSliderDots,
 		arrows: showNavArrows,
@@ -172,13 +154,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Show Navigation Arrows', 'fun-slides' ) }
 						help={ __( 'Display the left-right navigation arrows to change slides on front-end', 'fun-slides' ) }
 						checked={ showNavArrows }
-						onChange={ setShowNavArrows }
+						onChange={ () => setAttributes({showNavArrows: !showNavArrows}) }
 					/>
 					<ToggleControl
 						label={ __( 'Show Slider Dots', 'fun-slides' ) }
 						help={ __( 'Display the dots below the slider on front-end', 'fun-slides' ) }
 						checked={ showSliderDots }
-						onChange={ setShowSliderDots }
+						onChange={ () => setAttributes({showSliderDots: !showSliderDots}) }
 					/>
 				</PanelBody>
 				<PanelBody title={ 'Autoplay Settings' }>
@@ -191,7 +173,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Enable Autoplay', 'fun-slides' ) }
 						help={ __( 'Enable/Disable Autoplay.', 'fun-slides' ) }
 						checked={ autoplay }
-						onChange={ setAutoplay }
+						onChange={ () => setAttributes({autoplay: !autoplay}) }
 					/>
 					{ !! autoplay && (
 						<RangeControl
@@ -199,7 +181,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							beforeIcon="clock"
 							help={ __( 'Set how long should each slide be displayed in milliseconds.', 'fun-slides' ) }
 							value={ slideTimer }
-							onChange={ setSlideTimer }
+							onChange={ (newSlideTimer) => setAttributes({slideTimer: newSlideTimer}) }
 							initialPosition={ slideTimer }
 							min={ 1000 }
 							max={ 20000 }

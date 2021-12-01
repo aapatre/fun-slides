@@ -150,31 +150,6 @@ function Edit(_ref) {
 
   function changeSlideIndex(oldIndex, newIndex) {
     setCurrentSlideIndex(newIndex);
-  } // Slider settings attribute functions.
-
-
-  function setSlideTimer(slideTimerValue) {
-    setAttributes({
-      slideTimer: slideTimerValue
-    });
-  }
-
-  function setAutoplay(autoplayValue) {
-    setAttributes({
-      autoplay: autoplayValue
-    });
-  }
-
-  function setShowSliderDots(showSliderDotsValue) {
-    setAttributes({
-      showSliderDots: showSliderDotsValue
-    });
-  }
-
-  function setShowNavArrows(showNavArrowsValue) {
-    setAttributes({
-      showNavArrows: showNavArrowsValue
-    });
   }
 
   const funSlidesSettings = {
@@ -194,25 +169,33 @@ function Edit(_ref) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Navigation Arrows', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the left-right navigation arrows to change slides on front-end', 'fun-slides'),
     checked: showNavArrows,
-    onChange: setShowNavArrows
+    onChange: () => setAttributes({
+      showNavArrows: !showNavArrows
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Slider Dots', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the dots below the slider on front-end', 'fun-slides'),
     checked: showSliderDots,
-    onChange: setShowSliderDots
+    onChange: () => setAttributes({
+      showSliderDots: !showSliderDots
+    })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: 'Autoplay Settings'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Note:', 'fun-slides')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Autoplay is disabled in the editor for convenience.', 'fun-slides'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Autoplay', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable/Disable Autoplay.', 'fun-slides'),
     checked: autoplay,
-    onChange: setAutoplay
+    onChange: () => setAttributes({
+      autoplay: !autoplay
+    })
   }), !!autoplay && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Autoplay Timer', 'fun-slides'),
     beforeIcon: "clock",
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Set how long should each slide be displayed in milliseconds.', 'fun-slides'),
     value: slideTimer,
-    onChange: setSlideTimer,
+    onChange: newSlideTimer => setAttributes({
+      slideTimer: newSlideTimer
+    }),
     initialPosition: slideTimer,
     min: 1000,
     max: 20000
