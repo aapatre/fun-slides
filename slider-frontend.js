@@ -9,13 +9,17 @@ jQuery(document).ready(function(){
   Array.from(all_videos).forEach( ( video ) => {
 
     video.addEventListener( 'playing', ( e ) => {
-      slideshow_list.slick( 'slickPause' )
-      console.log('Triggered');
-    } )
-    video.addEventListener( 'pause', ( e ) => {
-      slideshow_list.slick( 'slickPlay' )
-    } )
+      
+      slideshow_list.slick( 'slickPause' );
 
-  } )
+    } );
+
+    video.addEventListener( 'pause', ( e ) => {
+
+      slideshow_list.slick( 'slickPlay' );
+
+    } );
+
+  } );
 
 });
