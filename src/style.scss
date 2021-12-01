@@ -21,7 +21,7 @@
     width: 500px;
     height: 300px;
 
-    margin: 2.5rem auto;
+    margin: 1rem auto 2.5rem auto;
 
     .fun-slides-frontend-slide {
         // width: auto;
@@ -89,7 +89,8 @@
             height: 150px;
 
             & > a {
-                top: 10px !important;
+                top: 100px !important;
+                height: 75px;
             }
     
             img, a > img {
