@@ -50,6 +50,7 @@
   top: -50px;
   bottom: -20px;
   left: -60px;
+  background-color: red !important;
 }
 .fun-slides-frontend-slideshow .slick-arrow {
   background-color: rgba(0, 0, 0, 0) !important;
