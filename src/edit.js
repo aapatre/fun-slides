@@ -169,14 +169,14 @@ export default function Edit( { attributes, setAttributes } ) {
 			<InspectorControls>
 				<PanelBody title={ __('Show/Hide Slider UI Elements', 'fun-slides' ) }>			
 					<ToggleControl
-						label={ __( 'Show Navigation Arrows?', 'fun-slides' ) }
-						help={ __( 'Display the left-right navigation arrows to change slides on front-end?', 'fun-slides' ) }
+						label={ __( 'Show Navigation Arrows', 'fun-slides' ) }
+						help={ __( 'Display the left-right navigation arrows to change slides on front-end', 'fun-slides' ) }
 						checked={ showNavArrows }
 						onChange={ setShowNavArrows }
 					/>
 					<ToggleControl
-						label={ __( 'Show Slider Dots?', 'fun-slides' ) }
-						help={ __( 'Display the dots below the slider on front-end?', 'fun-slides' ) }
+						label={ __( 'Show Slider Dots', 'fun-slides' ) }
+						help={ __( 'Display the dots below the slider on front-end', 'fun-slides' ) }
 						checked={ showSliderDots }
 						onChange={ setShowSliderDots }
 					/>
@@ -188,7 +188,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					<hr/>
 
 					<ToggleControl
-						label={ __( 'Enable Autoplay?', 'fun-slides' ) }
+						label={ __( 'Enable Autoplay', 'fun-slides' ) }
 						help={ __( 'Enable/Disable Autoplay.', 'fun-slides' ) }
 						checked={ autoplay }
 						onChange={ setAutoplay }
@@ -209,12 +209,6 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div className="fun-slides-parent-wrapper" { ...useBlockProps() }>
-
-				{/* If no slides in the slideshow, tell user to add one */}
-
-				{ ( slideshow[0] === undefined ) && (
-					<div>Add a slide with the <span class="dashicons dashicons-plus"></span> icon on block toolbar</div>
-				) }
 
 				<Slider
 					beforeChange = { changeSlideIndex }

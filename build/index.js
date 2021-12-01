@@ -191,19 +191,19 @@ function Edit(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show/Hide Slider UI Elements', 'fun-slides')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Navigation Arrows?', 'fun-slides'),
-    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the left-right navigation arrows to change slides on front-end?', 'fun-slides'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Navigation Arrows', 'fun-slides'),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the left-right navigation arrows to change slides on front-end', 'fun-slides'),
     checked: showNavArrows,
     onChange: setShowNavArrows
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Slider Dots?', 'fun-slides'),
-    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the dots below the slider on front-end?', 'fun-slides'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Slider Dots', 'fun-slides'),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the dots below the slider on front-end', 'fun-slides'),
     checked: showSliderDots,
     onChange: setShowSliderDots
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: 'Autoplay Settings'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Note:', 'fun-slides')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Autoplay is disabled in the editor for convenience.', 'fun-slides'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Autoplay?', 'fun-slides'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Autoplay', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable/Disable Autoplay.', 'fun-slides'),
     checked: autoplay,
     onChange: setAutoplay
@@ -218,9 +218,7 @@ function Edit(_ref) {
     max: 20000
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-parent-wrapper"
-  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), slideshow[0] === undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "Add a slide with the ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    class: "dashicons dashicons-plus"
-  }), " icon on block toolbar"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     beforeChange: changeSlideIndex
   }, funSlidesSettings), slideshow.map((slide, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

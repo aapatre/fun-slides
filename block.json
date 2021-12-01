@@ -24,7 +24,14 @@
 		},
 		"slideshow": {
 			"type": "array",
-			"default": []
+			"default": [
+				{
+					"mediaSrc": "",
+					"mediaType": "",
+					"ctaText": "",
+					"slideLink": ""
+				}
+			]
 		},
 		"slideTimer": {
 			"type": "integer",
