@@ -29,7 +29,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton, CheckboxControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow, RangeControl, ToolbarButton, ToggleControl } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
 
@@ -168,13 +168,13 @@ export default function Edit( { attributes, setAttributes } ) {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __('Show/Hide Slider UI Elements', 'fun-slides' ) }>			
-					<CheckboxControl
+					<ToggleControl
 						label={ __( 'Show Navigation Arrows?', 'fun-slides' ) }
 						help={ __( 'Display the left-right navigation arrows to change slides on front-end?', 'fun-slides' ) }
 						checked={ showNavArrows }
 						onChange={ setShowNavArrows }
 					/>
-					<CheckboxControl
+					<ToggleControl
 						label={ __( 'Show Slider Dots?', 'fun-slides' ) }
 						help={ __( 'Display the dots below the slider on front-end?', 'fun-slides' ) }
 						checked={ showSliderDots }
@@ -187,7 +187,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 					<hr/>
 
-					<CheckboxControl
+					<ToggleControl
 						label={ __( 'Enable Autoplay?', 'fun-slides' ) }
 						help={ __( 'Enable/Disable Autoplay.', 'fun-slides' ) }
 						checked={ autoplay }
