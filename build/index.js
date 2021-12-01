@@ -383,7 +383,6 @@ function save(_ref) {
       frontend_slideshow.push(slide);
     }
   });
-  console.log(frontend_slideshow);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "fun-slides-frontend-wrapper"
   }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -405,7 +404,7 @@ function save(_ref) {
       src: slide.mediaSrc,
       alt: "slideshow",
       controls: true
-    }), slide.slideLink && slide.slideLink.url != "" && console.log(slide.slideLink.title), slide.slideLink && slide.slideLink.url != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+    }), slide.slideLink && slide.slideLink.url != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       href: slide.slideLink.url,
       target: "_blank",
       rel: "noopener noreferrer",

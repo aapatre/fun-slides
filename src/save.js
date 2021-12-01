@@ -49,8 +49,6 @@ export default function save( { attributes } ) {
 		}
 	);
 
-	console.log(frontend_slideshow);
-
 	return (
 		<div className="fun-slides-frontend-wrapper" { ...useBlockProps.save() }>
 
@@ -66,10 +64,6 @@ export default function save( { attributes } ) {
 								) }
 								{ ( slide.mediaType === "video" ) && (
 									<video className="fun-slides-frontend-video" src={slide.mediaSrc} alt="slideshow" controls />
-								) }
-
-								{ ( slide.slideLink && slide.slideLink.url != "" ) && (
-									console.log(slide.slideLink.title)
 								) }
 
 								{/* If slide link is present */}
