@@ -29,6 +29,10 @@
 }
 .fun-slides-frontend-slideshow .fun-slides-frontend-slide > a {
   top: 20px !important;
+  left: initial !important;
+  width: inherit;
+  height: 190px;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 .fun-slides-frontend-slideshow .fun-slides-frontend-slide img, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > img {
   width: auto;
