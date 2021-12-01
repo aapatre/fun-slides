@@ -167,7 +167,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ 'Show/Hide Slider UI Elements' }>			
+				<PanelBody title={ __('Show/Hide Slider UI Elements', 'fun-slides' ) }>			
 					<CheckboxControl
 						label={ __( 'Show Navigation Arrows?', 'fun-slides' ) }
 						help={ __( 'Display the left-right navigation arrows to change slides on front-end?', 'fun-slides' ) }
@@ -183,7 +183,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 				<PanelBody title={ 'Autoplay Settings' }>
 
-					<span><i><strong>Note: </strong>Autoplay is disabled in the editor for convenience.</i></span>
+					<span><i><strong>{ __( 'Note:', 'fun-slides' ) }</strong>{ __('Autoplay is disabled in the editor for convenience.', 'fun-slides' ) }</i></span>
 
 					<hr/>
 
@@ -228,7 +228,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									
 									<MediaPlaceholder
 										labels = { {
-											title: "Choose Media for the Slide"
+											title: __("Choose Media for the Slide", "fun-slides" )
 										} }
 										onSelect = { (mediaObj) => changeMediaSrc( mediaObj, index ) }
 										accept = "video/*, image/*"
@@ -270,7 +270,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				<BlockControls>
 					<ToolbarButton
 						icon='plus'
-						label={ __( "New Slide", 'ultimate-slider' ) }
+						label={ __( "New Slide", 'fun-slides' ) }
 						onClick={ addNewSlide }
 					/>
 					{ ( (slideshow.length > 0) && ( slideshow[currentSlideIndex].mediaSrc != "" ) ) && (

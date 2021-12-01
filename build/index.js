@@ -189,7 +189,7 @@ function Edit(_ref) {
     accessibility: false
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: 'Show/Hide Slider UI Elements'
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show/Hide Slider UI Elements', 'fun-slides')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show Navigation Arrows?', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Display the left-right navigation arrows to change slides on front-end?', 'fun-slides'),
@@ -202,7 +202,7 @@ function Edit(_ref) {
     onChange: setShowSliderDots
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: 'Autoplay Settings'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, "Note: "), "Autoplay is disabled in the editor for convenience.")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Note:', 'fun-slides')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Autoplay is disabled in the editor for convenience.', 'fun-slides'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.CheckboxControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Autoplay?', 'fun-slides'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable/Disable Autoplay.', 'fun-slides'),
     checked: autoplay,
@@ -227,7 +227,7 @@ function Edit(_ref) {
       className: "fun-slides-slide"
     }, slide.mediaSrc === "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
       labels: {
-        title: "Choose Media for the Slide"
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Choose Media for the Slide", "fun-slides")
       },
       onSelect: mediaObj => changeMediaSrc(mediaObj, index),
       accept: "video/*, image/*",
@@ -252,7 +252,7 @@ function Edit(_ref) {
     })));
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToolbarButton, {
     icon: "plus",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("New Slide", 'ultimate-slider'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("New Slide", 'fun-slides'),
     onClick: addNewSlide
   }), slideshow.length > 0 && slideshow[currentSlideIndex].mediaSrc != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
     value: slideshow[currentSlideIndex].slideLink,
