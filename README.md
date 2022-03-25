@@ -1,7 +1,7 @@
 # Fun Slides - Gutenberg Slideshow Block for WordPress
 
-Do you want to create a slideshow of images and videos in your WordPress posts?
-And perhaps even add call-to-action button on each slide?
+Do you want to create a slideshow of images and videos in your WordPress posts? <br/>
+And perhaps even add call-to-action button on each slide? <br/>
 Fun slides is here to fix your worries!
 
 ## Carousel Libraries Used:
