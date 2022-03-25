@@ -1,55 +1,37 @@
-=== Fun Slides ===
-Contributors:      Antariksh Patre
-Tags:              block
-Tested up to:      5.8.0
-Stable tag:        0.1.0
-License:           GPL-2.0-or-later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+# Fun Slides - Gutenberg Slideshow Block for WordPress
 
-Fun Slides for Gutenberg!
+Do you want to create a slideshow of images and videos in your WordPress posts?
+And perhaps even add call-to-action button on each slide?
+Fun slides is here to fix your worries!
 
-== Description ==
+## Carousel Libraries Used:
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
+- React Slick (for back-end)
+ 
+- Slick (the original slick library for the front-end)
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+- Slick Theme (for the front-end CSS)
 
-== Installation ==
+## Additional Notes:
 
-This section describes how to install the plugin and get it working.
+- If slides are added in the back-end but the media isn't selected, the entire slide is scrapped on the front-end 
 
-e.g.
+## Screenshots
 
-1. Upload the plugin files to the `/wp-content/plugins/fun-slides` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
+### Front-end
 
+<img src="https://user-images.githubusercontent.com/20199688/144190634-3327fef1-aa87-45be-8193-b77f4db8253e.png" height="250px" />
 
-== Frequently Asked Questions ==
+### Backend
 
-= A question that someone might have =
+#### Slide Link UI (to add links to the slide media)
 
-An answer to that question.
+<img src="https://user-images.githubusercontent.com/20199688/144190671-2f360460-f8b6-4f0b-bb8e-b8f8172b3485.png" height="250px" />
 
-= What about foo bar? =
+#### Rich Text Editor
 
-Answer to foo bar dilemma.
+<img src="https://user-images.githubusercontent.com/20199688/144190738-347deb26-4d8d-441a-890d-fbbbc9bbbdde.png" height="250px" />
 
-== Screenshots ==
+#### Media Placeholder / Slide Media Uploader
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
-== Changelog ==
-
-= 0.1.0 =
-* Release
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
+<img src="https://user-images.githubusercontent.com/20199688/144190697-5746c57c-a25f-4524-bf2c-6180ac3ba64a.png" height="250px" />
