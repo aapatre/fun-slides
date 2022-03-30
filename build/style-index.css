@@ -1,1 +1,114 @@
-.wp-block-fun-slides-fun-slides{background-color:#21759b;color:#fff;padding:2px}
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-fun-slides-fun-slides {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+.fun-slides-frontend-slideshow {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+  margin: 1rem auto 2.5rem auto;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide > a {
+  top: 20px !important;
+  left: initial !important;
+  width: inherit;
+  height: 190px;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide img, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > img {
+  width: auto;
+  height: 300px;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide video, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > video {
+  width: auto;
+  height: 300px;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta {
+  position: absolute;
+  bottom: 20%;
+}
+.fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta a {
+  top: -50px;
+  bottom: -20px;
+  left: -60px;
+  background-color: red !important;
+}
+.fun-slides-frontend-slideshow .slick-arrow {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+.fun-slides-frontend-slideshow .slick-dots {
+  padding: 0.5% 1%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background: linear-gradient(180deg, rgba(75, 75, 75, 0) 0%, white 100%);
+  border-radius: 5px;
+}
+.fun-slides-frontend-slideshow .slick-dots li.slick-active button::before {
+  color: black;
+}
+
+.slick-slider {
+  margin: 2.5rem 0;
+}
+
+@media only screen and (max-width: 599px) {
+  .wp-block-fun-slides-fun-slides {
+    height: 175px;
+  }
+
+  .fun-slides-frontend-slideshow {
+    width: 250px;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide {
+    width: 250px;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide > a {
+    top: 100px !important;
+    height: 75px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide img, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > img {
+    width: auto;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide video, .fun-slides-frontend-slideshow .fun-slides-frontend-slide a > video {
+    width: auto;
+    height: 150px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta {
+    bottom: 10%;
+    max-width: 100px;
+  }
+  .fun-slides-frontend-slideshow .fun-slides-frontend-slide .fun-slides-frontend-cta a {
+    top: -140px;
+    bottom: 100px;
+    left: -40px;
+    width: 82px;
+    font-size: 10px;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/
